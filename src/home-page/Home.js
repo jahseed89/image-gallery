@@ -54,6 +54,7 @@ const useStyles = createUseStyles((theme) => ({
   "@media (max-width: 1000px)": {
     header:{
         fontSize: theme.fonts.middleFont,
+        textAlign: 'start'
     },
     inputWrapper: {
         flexDirection: 'column',
@@ -64,8 +65,12 @@ const useStyles = createUseStyles((theme) => ({
     },
     button: {
         width: '300px'
-    }
- 
+    },
+    homeContainer: {
+        width: '95%',
+        margin: '0 auto',
+        border: '2px solid red'
+    },
   },
 }));
 
