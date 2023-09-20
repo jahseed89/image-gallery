@@ -20,8 +20,8 @@ const useStyles = createUseStyles((theme) => ({
     marginTop: '2rem'
   },
   inputField: {
-    padding: "10px 5px 5px 10px ",
-    borderRadius: "20px",
+    padding: "1rem .5rem ",
+    borderRadius: "15px",
     width: "20%",
     backgroundColor: theme.color.lighter,
     border: 'none',
@@ -38,9 +38,8 @@ const useStyles = createUseStyles((theme) => ({
     background: '#0a0a23',
     color: '#fff',
     boxShadow: '0px 0px 2px 2px rgb(0,0,0)',
-    padding: '5px',
-    paddingTop: '.7rem'
-,    border: 'none',
+    padding: '.8ren .5rem',
+    border: 'none',
     borderRadius: '10px',
     cursor: 'pointer',
     width: '20%',

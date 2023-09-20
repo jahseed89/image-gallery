@@ -57,7 +57,7 @@ const useStyles = createUseStyles((theme) => ({
   },
   input: {
     width: "80%",
-    padding: ".5rem",
+    padding: " .8rem .5rem",
     borderRadius: "10px",
     border: "none",
     textAlign: "left",
@@ -72,10 +72,9 @@ const useStyles = createUseStyles((theme) => ({
   },
   signBtn: {
     width: "80%",
-    padding: ".5rem",
+    padding: ".8rem .5rem",
     borderRadius: "10px",
     margin: "1rem 0",
-    paddingTop: ".8rem",
     backgroundColor: "black",
     color: "#fff",
     border: "none",
