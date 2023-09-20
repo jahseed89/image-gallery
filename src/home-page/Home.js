@@ -24,7 +24,7 @@ const useStyles = createUseStyles((theme) => ({
     borderRadius: "20px",
     width: "20%",
     backgroundColor: theme.color.lighter,
-    border: 'none'
+    border: 'none',
   },
   homeContainer: {
     width: "90%",
@@ -62,6 +62,9 @@ const useStyles = createUseStyles((theme) => ({
         marginBottom: '1.5rem',
         width: '300px'
     },
+    button: {
+        width: '300px'
+    }
  
   },
 }));
