@@ -27,7 +27,6 @@ function App() {
        <Routes>
         <Route path='/' element={<Login/>} />
         <Route path='gallery' element={<Home />} />
-
        </Routes>
       </ThemeProvider>
     </div>
