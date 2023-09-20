@@ -1,11 +1,20 @@
 import React from 'react';
 import Home from './home-page/Home';
-import { ThemeProvider } from 'react-jss';
-import './app.css'
+import { ThemeProvider, createUseStyles } from 'react-jss';
 import { Route, Routes } from 'react-router-dom';
 import Login from './auth/Login';
 
+const useStyles = createUseStyles(() => ({
+  app: {
+    margin: 0,
+    padding: 0,
+    boxSizing: 'border-box',
+    fontFamily: "'Noto Sans Siddham', sans-serif",
+  },
+}))
+
 function App() {
+  const classes = useStyles()
   const theme = {
     color: {
       grey: "red",
@@ -22,7 +31,7 @@ function App() {
     }
   }
   return (
-    <div>
+    <div className={classes.app}>
       <ThemeProvider theme={theme}>
        <Routes>
         <Route path='/' element={<Login/>} />
