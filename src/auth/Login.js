@@ -104,7 +104,7 @@ const useStyles = createUseStyles((theme) => ({
       display: "none",
     },
     loginTitle: {
-      fontSize: theme.smallFont,
+      fontSize: theme.smallerFont,
     },
     formContainer: {
       width: "100%",
