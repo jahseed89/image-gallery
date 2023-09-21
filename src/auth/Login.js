@@ -72,7 +72,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   inputLabel: {
-    marginBottom: '.7rem'
+    marginBottom: ".7rem",
   },
 
   signBtn: {
@@ -104,12 +104,12 @@ const useStyles = createUseStyles((theme) => ({
       display: "none",
     },
     loginTitle: {
-      fontSize: theme.smallFont
+      fontSize: theme.smallFont,
     },
     formContainer: {
       width: "100%",
       margin: "1rem auto",
-      height: 'fit-content',
+      height: "fit-content",
     },
   },
 }));
@@ -126,6 +126,16 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (email === "" || password === "") {
+      setErrorMsg("Please fill in all fields.");
+      setIsLoading(false);
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
+      return;
+    }
+
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
