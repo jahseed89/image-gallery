@@ -71,6 +71,10 @@ const useStyles = createUseStyles((theme) => ({
     marginBottom: "-.3rem",
   },
 
+  inputLabel: {
+    marginBottom: '.7rem'
+  },
+
   signBtn: {
     width: "50%",
     padding: ".8rem .5rem",
@@ -161,7 +165,7 @@ const SignUp = () => {
               </div>
 
               <div className={classes.inputWrapper}>
-                <p>Enter Email</p>
+                <p className={classes.inputLabel}>Enter Email</p>
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
@@ -170,7 +174,7 @@ const SignUp = () => {
                 />
               </div>
               <div className={classes.inputWrapper}>
-                <p>Enter Password</p>
+                <p className={classes.inputLabel}>Enter Password</p>
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
