@@ -134,7 +134,7 @@ const Login = () => {
         setErrorMsg("");
       }, 3000);
       return;
-    }
+    } 
 
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
@@ -144,7 +144,7 @@ const Login = () => {
           setTimeout(() => {
             toHomePage();
           }, 3000);
-        }
+        } 
       })
       .catch((error) => {
         setErrorMsg(error.message);
@@ -182,7 +182,7 @@ const Login = () => {
             </h1>
             {errorMsg && (
               <p className={classes.errorMessage}>
-                Opps!!! Login with the right credential
+               {errorMsg}
               </p>
             )}
             <form onSubmit={handleSubmit} className={classes.form}>
