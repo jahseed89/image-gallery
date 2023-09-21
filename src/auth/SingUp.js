@@ -190,7 +190,7 @@ const SignUp = () => {
                   className={classes.eyeIcon}
                 />
               </div>
-              <button className={classes.signBtn}>Sign In</button>
+              <button className={classes.signBtn}>Sign Up</button>
               <div>
                 <p>
                   Already have an account?{" "}
