@@ -60,16 +60,18 @@ const useStyles = createUseStyles((theme) => ({
     },
     inputField: {
         marginBottom: '1.5rem',
-        width: '300px'
+        padding: '1rem .5rem',
+        width: '280px'
     },
     button: {
-        width: '300px'
+        width: '300px',
+        padding: '1rem .5rem'
     },
     homeContainer: {
         width: '95%',
         margin: '0 auto',
     },
-  },
+  }
 }));
 
 const Home = () => {
