@@ -109,8 +109,8 @@ const useStyles = createUseStyles((theme) => ({
     formContainer: {
       width: "100%",
       margin: "1rem auto",
+      height: 'fit-content',
     },
-
   },
 }));
 

@@ -8,107 +8,111 @@ import { createUseStyles } from "react-jss";
 import Login from "./Login";
 
 const useStyles = createUseStyles((theme) => ({
-  loginContainer: {
-    width: "90%",
-    margin: "1rem auto",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "space-between",
-    backgroundColor: theme.color.littleDarker,
-  },
-
-  logSvg: {
-    objectFit: "contain",
-    width: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: theme.color.littleDarker,
-  },
-  logAvatar: {
-    width: "90%",
-    borderRadius: "10px",
-  },
-  formContainer: {
-    width: "45%",
-  },
-  errorMessage: {
-    color: "red",
-    textAlign: "center",
-  },
-  form: {
-    width: "70%",
-    margin: "1rem auto",
-    backgroundColor: "#fff",
-    height: "80%",
-    borderRadius: "10px",
-    padding: "1rem",
-    paddingLeft: "4rem",
-  },
-  loginTitle: {
-    textAlign: "center",
-    marginTop: "1rem",
-  },
-  signinHeader: {
-    textAlign: "center",
-  },
-  inputWrapper: {
-    margin: "1.5rem 0",
-  },
-  input: {
-    width: "80%",
-    padding: " .8rem .5rem",
-    borderRadius: "10px",
-    border: "none",
-    textAlign: "left",
-    display: "inline-flex",
-    alignItems: "center",
-    backgroundColor: theme.color.littleDarker,
-  },
-  eyeIcon: {
-    marginLeft: "-2rem",
-    cursor: "pointer",
-    marginBottom: "-.3rem",
-  },
-
-  inputLabel: {
-    marginBottom: '.7rem'
-  },
-
-  signBtn: {
-    width: "50%",
-    padding: ".8rem .5rem",
-    borderRadius: "10px",
-    backgroundColor: "black",
-    color: "#fff",
-    border: "none",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-    margin: ".5rem 0",
-    "&:hover": {
-      backgroundColor: "#fff",
-      color: "#000",
-      border: "2px solid #000",
-    },
-  },
-  signup: {
-    marginTop: "1.5rem",
-    cursor: "pointer",
-    fontStyle: "italic",
-    fontWeight: "bold",
-    color: "blue",
-  },
-
-  "@media (max-width: 1000px)": {
-    logSvg: {
-      display: "none",
-    },
-    formContainer: {
+    loginContainer: {
       width: "90%",
       margin: "1rem auto",
+      height: "100vh",
+      display: "flex",
+      justifyContent: "space-between",
+      backgroundColor: theme.color.littleDarker,
     },
-  },
-}));
+  
+    logSvg: {
+      objectFit: "contain",
+      width: "50%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: theme.color.littleDarker,
+    },
+    logAvatar: {
+      width: "90%",
+      borderRadius: "10px",
+    },
+    formContainer: {
+      width: "45%",
+    },
+    errorMessage: {
+      color: "red",
+      textAlign: "center",
+    },
+    form: {
+      width: "70%",
+      margin: "1rem auto",
+      backgroundColor: "#fff",
+      height: "80%",
+      borderRadius: "10px",
+      padding: "1rem",
+      paddingLeft: "4rem",
+    },
+    loginTitle: {
+      textAlign: "center",
+      marginTop: "1rem",
+    },
+    signinHeader: {
+      textAlign: "center",
+    },
+    inputWrapper: {
+      margin: "1.5rem 0",
+    },
+    input: {
+      width: "80%",
+      padding: " .8rem .5rem",
+      borderRadius: "10px",
+      border: "none",
+      textAlign: "left",
+      display: "inline-flex",
+      alignItems: "center",
+      backgroundColor: theme.color.littleDarker,
+    },
+    eyeIcon: {
+      marginLeft: "-2rem",
+      cursor: "pointer",
+      marginBottom: "-.3rem",
+    },
+  
+    inputLabel: {
+      marginBottom: '.7rem'
+    },
+  
+    signBtn: {
+      width: "50%",
+      padding: ".8rem .5rem",
+      borderRadius: "10px",
+      backgroundColor: "black",
+      color: "#fff",
+      border: "none",
+      cursor: "pointer",
+      transition: "background-color 0.3s ease",
+      margin: ".5rem 0",
+      "&:hover": {
+        backgroundColor: "#fff",
+        color: "#000",
+        border: "2px solid #000",
+      },
+    },
+    signup: {
+      marginTop: "1.5rem",
+      cursor: "pointer",
+      fontStyle: "italic",
+      fontWeight: "bold",
+      color: "blue",
+    },
+  
+    "@media (max-width: 1000px)": {
+      logSvg: {
+        display: "none",
+      },
+      loginTitle: {
+        fontSize: theme.smallFont
+      },
+      formContainer: {
+        width: "100%",
+        margin: "1rem auto",
+        height: 'fit-content',
+      },
+    },
+  }));
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
