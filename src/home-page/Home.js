@@ -68,7 +68,6 @@ const useStyles = createUseStyles((theme) => ({
     homeContainer: {
         width: '95%',
         margin: '0 auto',
-        border: '2px solid red'
     },
   },
 }));
