@@ -100,16 +100,35 @@ const useStyles = createUseStyles((theme) => ({
     },
   
     "@media (max-width: 1000px)": {
+      loginContainer: {
+        width: '100%',
+      },
       logSvg: {
         display: "none",
       },
       loginTitle: {
-        fontSize: theme.smallerFont
+        fontSize: theme.smallerFont,
+        marginTop: "0.5rem",
       },
       formContainer: {
-        width: "100%",
+        width: "90%",
         margin: "1rem auto",
-        height: 'fit-content',
+        height: "fit-content",
+        padding: "1rem 0",
+      },
+      form: {
+        width: "100%",
+        padding: "1rem 0 1rem .5rem",
+      },
+      input: {
+        width: "90%",
+      },
+      signBtn: {
+        width: "95%",
+        margin: "1rem 0",
+      },
+      signup: {
+        marginTop: "1rem",
       },
     },
   }));

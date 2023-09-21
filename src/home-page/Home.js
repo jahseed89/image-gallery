@@ -51,25 +51,29 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   "@media (max-width: 1000px)": {
-    header:{
-        fontSize: theme.fonts.middleFont,
-        textAlign: 'start'
+    header: {
+      fontSize: theme.fonts.middleFont,
+      textAlign: "start",
     },
     inputWrapper: {
-        flexDirection: 'column',
+      flexDirection: "column",
+      alignItems: "start",
     },
     inputField: {
-        marginBottom: '1.5rem',
-        padding: '1rem .5rem',
-        width: '280px'
+      marginBottom: "1.5rem",
+      padding: "1rem .5rem",
+      width: "100%",
+      maxWidth: "280px",
     },
     button: {
-        width: '300px',
-        padding: '1rem .5rem'
+      width: "100%",
+      maxWidth: "300px",
+      padding: "1rem .5rem",
+      marginBottom: "1rem",
     },
     homeContainer: {
-        width: '95%',
-        margin: '0 auto',
+      width: "95%",
+      margin: "0 auto",
     },
   },
 }));
