@@ -11,20 +11,20 @@ const useStyles = createUseStyles((theme) => ({
     flexWrap: "wrap",
   },
   inputWrapper: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between'
   },
   header: {
     fontSize: theme.fonts.larg,
     textAlign: "center",
-    marginTop: "2rem",
+    marginTop: '2rem'
   },
   inputField: {
     padding: "1rem .5rem ",
     borderRadius: "15px",
     width: "20%",
     backgroundColor: theme.color.lighter,
-    border: "none",
+    border: 'none',
   },
   homeContainer: {
     width: "90%",
@@ -35,54 +35,51 @@ const useStyles = createUseStyles((theme) => ({
     margin: "1rem 0",
   },
   button: {
-    background: "#0a0a23",
-    color: "#fff",
-    boxShadow: "0px 0px 2px 2px rgb(0,0,0)",
-    padding: ".8ren .5rem",
-    border: "none",
-    borderRadius: "10px",
-    cursor: "pointer",
-    width: "20%",
+    background: '#0a0a23',
+    color: '#fff',
+    boxShadow: '0px 0px 2px 2px rgb(0,0,0)',
+    padding: '.8ren .5rem',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    width: '20%',
     "&:hover": {
-      backgroundColor: "transparent",
-      border: "2px solid #000",
-      color: "#000",
-    },
+        backgroundColor: 'transparent',
+        border: '2px solid #000',
+        color: '#000'
+    }
   },
 
   "@media (max-width: 1000px)": {
-    header: {
-      fontSize: theme.fonts.middleFont,
-      textAlign: "start",
+    header:{
+        fontSize: theme.fonts.middleFont,
+        textAlign: 'start'
     },
     inputWrapper: {
-      flexDirection: "column",
+        flexDirection: 'column',
     },
     inputField: {
-      marginBottom: "1.5rem",
-      padding: "1rem .5rem",
-      width: "280px",
+        marginBottom: '1.5rem',
+        padding: '1rem .5rem',
+        width: '280px'
     },
     button: {
-      width: "300px",
-      padding: "1rem .5rem",
+        width: '300px',
+        padding: '1rem .5rem'
     },
     homeContainer: {
-      width: "95%",
-      margin: "0 auto",
+        width: '95%',
+        margin: '0 auto',
     },
   },
 }));
-
 
 const Home = () => {
   const [gallaryItems, setGalleryItems] = useState(gallery);
   const [searchTheme, setSearchTheme] = useState("");
   const [dragItem, setDragItem] = useState(null);
   const [dragOverItem, setDragOverItem] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
+  const [isDragging, setIsDragging] = useState();
   const classes = useStyles();
 
   const containerRef = useRef(null);
@@ -91,27 +88,9 @@ const Home = () => {
     setSearchTheme(e.target.value);
   };
 
-  const handleDragStart = (index, event) => {
-    if (event.type === "touchstart") {
-      setTouchStart(index);
-    } else {
-      setDragItem(index);
-      setIsDragging(true);
-    }
-  };
-
-  const handleDragEnd = (event) => {
-    if (event.type === "touchend") {
-      if (touchStart !== null && touchEnd !== null) {
-        handleDrop(touchStart, touchEnd);
-        setTouchStart(null);
-        setTouchEnd(null);
-      }
-    } else {
-      setDragItem(null);
-      setDragOverItem(null);
-      setIsDragging(false);
-    }
+  const handleDragStart = (index) => {
+    setDragItem(index);
+    setIsDragging(true);
   };
 
   const handleDragOver = (e) => {
@@ -141,6 +120,12 @@ const Home = () => {
     setDragOverItem(null);
   };
 
+  const handleDragEnd = () => {
+    setDragItem(null);
+    setDragOverItem(null);
+    setIsDragging(false);
+  };
+
   const filteredItems = gallaryItems.filter((item) =>
     item.tag?.toLowerCase().includes(searchTheme.toLowerCase())
   );
@@ -149,6 +134,7 @@ const Home = () => {
     const sortedItems = [...filteredItems].sort((a, b) => a.id - b.id);
     setGalleryItems(sortedItems);
   };
+
 
   return (
     <div className={classes.homeContainer}>
@@ -160,9 +146,7 @@ const Home = () => {
           value={searchTheme}
           className={classes.inputField}
         />
-        <button onClick={reArrange} className={classes.button}>
-          Re-Arrange
-        </button>
+        <button onClick={reArrange} className={classes.button}>Re-Arrange</button>
       </div>
       <div className={classes.cardWrapper} ref={containerRef}>
         {filteredItems.map((data, index) => (
@@ -170,21 +154,13 @@ const Home = () => {
             key={data.id}
             url={data.url}
             tag={data.tag}
-            onTouchStart={(e) => handleDragStart(index, e)}
-            onTouchEnd={(e) => {
-              setTouchEnd(index);
-              handleDragEnd(e);
-            }}
-            onTouchMove={(e) => {
-              e.preventDefault();
-            }}
             draggable
-            onDragStart={(e) => handleDragStart(index, e)}
+            onDragStart={() => handleDragStart(index)}
             onDragOver={handleDragOver}
             onDrop={() => handleDrop(index)}
             onDragEnter={() => handleDragEnter(index)}
             onDragLeave={handleDragLeave}
-            onDragEnd={() => handleDragEnd(index)}
+            onDragEnd={handleDragEnd}
             className={`img-container ${
               isDragging && dragOverItem === index ? "dragging" : ""
             }`}
@@ -196,3 +172,5 @@ const Home = () => {
 };
 
 export default Home;
+
+
