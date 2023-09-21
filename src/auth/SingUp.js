@@ -9,103 +9,101 @@ import Login from "./Login";
 
 const useStyles = createUseStyles((theme) => ({
   loginContainer: {
-    width: '90%',
-    margin: '1rem auto',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'space-between',
-    backgroundColor: theme.color.littleDarker
+    width: "90%",
+    margin: "1rem auto",
+    height: "100vh",
+    display: "flex",
+    justifyContent: "space-between",
+    backgroundColor: theme.color.littleDarker,
   },
 
   logSvg: {
-    objectFit: 'contain',
-    width: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.color.littleDarker
+    objectFit: "contain",
+    width: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: theme.color.littleDarker,
   },
   logAvatar: {
-    width: '90%',
-    borderRadius:'10px'
+    width: "90%",
+    borderRadius: "10px",
   },
   formContainer: {
-    width: '45%',
+    width: "45%",
   },
   errorMessage: {
-    color: 'red',
-    textAlign: 'center'
+    color: "red",
+    textAlign: "center",
   },
   form: {
-    width: '70%',
-    margin: '1rem auto',
-    backgroundColor: '#fff',
-    height: '80%',
-    borderRadius: '10px',
-    padding: '1rem',
-    paddingLeft: '4rem'
+    width: "70%",
+    margin: "1rem auto",
+    backgroundColor: "#fff",
+    height: "80%",
+    borderRadius: "10px",
+    padding: "1rem",
+    paddingLeft: "4rem",
   },
   loginTitle: {
-    textAlign: 'center',
-    marginTop: '1rem'
+    textAlign: "center",
+    marginTop: "1rem",
   },
   signinHeader: {
-    textAlign: 'center'
+    textAlign: "center",
   },
   inputWrapper: {
-    margin: '1.5rem 0'
+    margin: "1.5rem 0",
   },
   input: {
-    width: '80%',
-    padding: '.5rem',
-    borderRadius: '10px',
-    border: 'none',
-    textAlign: 'left',
-    display: 'inline-flex',
-    alignItems: 'center',
-    backgroundColor: theme.color.littleDarker
+    width: "80%",
+    padding: " .8rem .5rem",
+    borderRadius: "10px",
+    border: "none",
+    textAlign: "left",
+    display: "inline-flex",
+    alignItems: "center",
+    backgroundColor: theme.color.littleDarker,
   },
   eyeIcon: {
-    marginLeft: '-2rem',
-    cursor: 'pointer',
-    marginBottom: '-.3rem'
+    marginLeft: "-2rem",
+    cursor: "pointer",
+    marginBottom: "-.3rem",
   },
+
   signBtn: {
-    width: '80%',
-    padding: '.5rem',
-    borderRadius: '10px',
-    margin: '1rem 0',
-    paddingTop: '.8rem',
-    backgroundColor: 'black',
-    color: '#fff',
-    border: 'none',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease', 
-    '&:hover': {
-      backgroundColor: '#fff',
-      color: '#000',
-      border: '2px solid #000'
+    width: "50%",
+    padding: ".8rem .5rem",
+    borderRadius: "10px",
+    backgroundColor: "black",
+    color: "#fff",
+    border: "none",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    margin: ".5rem 0",
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "#000",
+      border: "2px solid #000",
     },
   },
   signup: {
-    marginTop: '1.5rem',
-    cursor: 'pointer',
-    fontStyle: 'italic',
-    fontWeight: 'bold',
-    color: 'blue'
+    marginTop: "1.5rem",
+    cursor: "pointer",
+    fontStyle: "italic",
+    fontWeight: "bold",
+    color: "blue",
   },
 
   "@media (max-width: 1000px)": {
     logSvg: {
-        display: 'none',
-
+      display: "none",
     },
     formContainer: {
-        width: '90%',
-        margin: '1rem auto'
-    }
+      width: "90%",
+      margin: "1rem auto",
+    },
   },
- 
 }));
 
 const SignUp = () => {
@@ -120,18 +118,17 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+      .then((userCredential) => {
         console.log(userCredential);
         if (userCredential) {
           setTimeout(() => {
             toHomePage();
           }, 3000);
-        } 
+        }
       })
       .catch((error) => {
-        setIsLoading(false)
-       
-      })
+        setIsLoading(false);
+      });
   };
 
   const handleSignUp = () => {
@@ -147,17 +144,21 @@ const SignUp = () => {
       {togglePage ? (
         <div className={classes.loginContainer}>
           <div className={classes.logSvg}>
-            <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=1060&t=st=1695234585~exp=1695235185~hmac=305d20d3e7b5805fab624ea4784ecc0bbb220b9c45f6d47e69ab868ec685d568" alt="svg" className={classes.logAvatar} />
+            <img
+              src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=1060&t=st=1695234585~exp=1695235185~hmac=305d20d3e7b5805fab624ea4784ecc0bbb220b9c45f6d47e69ab868ec685d568"
+              alt="svg"
+              className={classes.logAvatar}
+            />
           </div>
           <div className={classes.formContainer}>
             <h1 className={classes.loginTitle}>Sign Up access Image Gallery</h1>
             {isLoading && <BradLoader />}
 
             <form onSubmit={handleSubmit} className={classes.form}>
-                <div className={classes.signinHeader}>
+              <div className={classes.signinHeader}>
                 <h3>Sign Up</h3>
                 <p>Welcome back please sign in</p>
-                </div>
+              </div>
 
               <div className={classes.inputWrapper}>
                 <p>Enter Email</p>
@@ -176,13 +177,18 @@ const SignUp = () => {
                   type={passwordVisibility ? "password" : "text"}
                   className={classes.input}
                 />
-                <IoIosEyeOff onClick={() => setPasswordVisibility((prev) => !prev)} className={classes.eyeIcon} />
+                <IoIosEyeOff
+                  onClick={() => setPasswordVisibility((prev) => !prev)}
+                  className={classes.eyeIcon}
+                />
               </div>
-              <button className={classes.signBtn}>Sign Up</button>
+              <button className={classes.signBtn}>Sign In</button>
               <div>
                 <p>
-                 Already have an account?{" "}
-                  <span onClick={handleSignUp} className={classes.signup}>Sign in</span>
+                  Already have an account?{" "}
+                  <span onClick={handleSignUp} className={classes.signup}>
+                    Sign in
+                  </span>
                 </p>
               </div>
             </form>

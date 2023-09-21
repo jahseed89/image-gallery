@@ -70,16 +70,17 @@ const useStyles = createUseStyles((theme) => ({
     cursor: "pointer",
     marginBottom: "-.3rem",
   },
+
   signBtn: {
-    width: "80%",
+    width: "50%",
     padding: ".8rem .5rem",
     borderRadius: "10px",
-    margin: "1rem 0",
     backgroundColor: "black",
     color: "#fff",
     border: "none",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
+    margin: ".5rem 0",
     "&:hover": {
       backgroundColor: "#fff",
       color: "#000",
@@ -155,17 +156,17 @@ const Login = () => {
               className={classes.logAvatar}
             />
           </div>
-            {isLoading && <BradLoader />}
-          
+          {isLoading && <BradLoader />}
+
           <div className={classes.formContainer}>
             <h1 className={classes.loginTitle}>
               Login to access Image Gallery
             </h1>
             {errorMsg && (
-            <p className={classes.errorMessage}>
-              Opps!!! Login with the right credential
-            </p>
-          )}
+              <p className={classes.errorMessage}>
+                Opps!!! Login with the right credential
+              </p>
+            )}
             <form onSubmit={handleSubmit} className={classes.form}>
               <div className={classes.signinHeader}>
                 <h3>Sign In</h3>
