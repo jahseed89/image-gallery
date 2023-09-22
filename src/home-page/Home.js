@@ -3,6 +3,9 @@ import { images } from "../component/images/Images";
 import ImageCard from "../component/image-card/ImageCard";
 import "./home.css";
 import { createUseStyles } from "react-jss";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = createUseStyles((theme) => ({
   cardWrapper: {
@@ -49,6 +52,27 @@ const useStyles = createUseStyles((theme) => ({
         color: '#000'
     }
   },
+  signOutBtnContainer: {
+    margin: '1rem 0',
+
+  },
+  signOutBtn: {
+    background: '#0a0a23',
+    color: '#fff',
+    boxShadow: '0px 0px 2px 2px rgb(0,0,0)',
+    padding: '1ren .5rem',
+    border: 'none',
+    cursor: 'pointer',
+    width: '20%',
+    height: '50px',
+    borderRadius: '10px',
+
+    "&:hover": {
+        backgroundColor: 'transparent',
+        border: '2px solid #000',
+        color: '#000'
+    }
+  },
 
   "@media (max-width: 1000px)": {
     header: {
@@ -75,7 +99,14 @@ const useStyles = createUseStyles((theme) => ({
       width: "95%",
       margin: "0 auto",
     },
+    signOutBtn: {
+      width: "100%",
+      maxWidth: "300px",
+      padding: "1rem .5rem",
+      marginBottom: "1rem",
+    }
   },
+  
 }));
 
 const Home = () => {
@@ -89,6 +120,8 @@ const Home = () => {
   const classes = useStyles();
 
   const containerRef = useRef(null);
+
+  const navigator = useNavigate()
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -153,6 +186,15 @@ const Home = () => {
     setGalleryItems(sortedItems);
   };
 
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      console.log('user is signed out')
+      navigator('/')
+    }).catch((error) => {
+      console.log('error logging out', error)
+    })
+  }
+
   return (
     <div className={classes.homeContainer}>
       <h1 className={classes.header}>The Best Draggable Image Gallery</h1>
@@ -191,6 +233,9 @@ const Home = () => {
             }`}
           />
         ))}
+      </div>
+      <div className={classes.signOutBtnContainer}>
+        <button onClick={handleSignOut} className={classes.signOutBtn}>Sign Out</button>
       </div>
     </div>
   );
