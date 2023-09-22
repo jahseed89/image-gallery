@@ -213,6 +213,7 @@ const Login = () => {
                   value={email}
                   type="email"
                   className={classes.input}
+                  placeholder="user@example.com"
                 />
               </div>
               <div className={classes.inputWrapper}>
@@ -222,6 +223,7 @@ const Login = () => {
                   value={password}
                   type={passwordVisibility ? "password" : "text"}
                   className={classes.input}
+                  placeholder="1Password"
                 />
                 <IoIosEyeOff
                   onClick={() => setPasswordVisibility((prev) => !prev)}
