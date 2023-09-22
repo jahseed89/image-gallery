@@ -1,4 +1,4 @@
-export const gallery = [
+export const images = [
     {
         id: 1,
         url: 'https://miro.medium.com/v2/resize:fit:1000/1*qXriJc4p8d1BngSNj4zr4w.jpeg',

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { gallery } from "../component/gallery/Gallery";
+import { images } from "../component/images/Images";
 import ImageCard from "../component/image-card/ImageCard";
 import "./home.css";
 import { createUseStyles } from "react-jss";
@@ -79,8 +79,8 @@ const useStyles = createUseStyles((theme) => ({
 }));
 
 const Home = () => {
-  const [gallaryItems, setGalleryItems] = useState(gallery);
-  const [searchTheme, setSearchTheme] = useState("");
+  const [gallaryItems, setGalleryItems] = useState(images);
+  const [searchTerm, setSearchTerm] = useState("");
   const [dragItem, setDragItem] = useState(null);
   const [dragOverItem, setDragOverItem] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -91,7 +91,7 @@ const Home = () => {
   const containerRef = useRef(null);
 
   const handleSearch = (e) => {
-    setSearchTheme(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
   const handleDragStart = (index, event) => {
@@ -145,7 +145,7 @@ const Home = () => {
   };
 
   const filteredItems = gallaryItems.filter((item) =>
-    item.tag?.toLowerCase().includes(searchTheme.toLowerCase())
+    item.tag?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const reArrange = () => {
@@ -160,7 +160,7 @@ const Home = () => {
         <input
           placeholder="Search by tag name"
           onChange={handleSearch}
-          value={searchTheme}
+          value={searchTerm}
           className={classes.inputField}
         />
         <button onClick={reArrange} className={classes.button}>
@@ -197,5 +197,3 @@ const Home = () => {
 };
 
 export default Home;
-
-

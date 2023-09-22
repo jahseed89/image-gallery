@@ -143,10 +143,14 @@ const Login = () => {
   const classes = useStyles();
   const navigator = useNavigate();
 
+  const toHomePage = () => {
+    navigator("/gallery");
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "" || password === "") {
+    if (!email || !password) {
       setErrorMsg("Please fill in all fields.");
       setIsLoading(false);
       setTimeout(() => {
@@ -178,9 +182,6 @@ const Login = () => {
     setTogglePage(false);
   };
 
-  const toHomePage = () => {
-    navigator("/gallery");
-  };
 
   return (
     <>
