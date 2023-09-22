@@ -17,6 +17,10 @@ const useStyles = createUseStyles((theme) => ({
 const ImageCard = ({
   url,
   tag,
+  draggable,
+  onTouchStart,
+  onTouchEnd,
+  onTouchMove,
   onDragStart,
   onDragOver,
   onDrop,
@@ -31,7 +35,10 @@ const ImageCard = ({
   return (
     <div
       className={className}
-      draggable
+      draggable={draggable}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      onTouchMove={onTouchMove}
       onDragStart={onDragStart}
       onDragOver={onDragOver}
       onDrop={onDrop}

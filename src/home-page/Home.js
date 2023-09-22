@@ -83,7 +83,9 @@ const Home = () => {
   const [searchTheme, setSearchTheme] = useState("");
   const [dragItem, setDragItem] = useState(null);
   const [dragOverItem, setDragOverItem] = useState(null);
-  const [isDragging, setIsDragging] = useState();
+  const [isDragging, setIsDragging] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
   const classes = useStyles();
 
   const containerRef = useRef(null);
@@ -92,9 +94,27 @@ const Home = () => {
     setSearchTheme(e.target.value);
   };
 
-  const handleDragStart = (index) => {
-    setDragItem(index);
-    setIsDragging(true);
+  const handleDragStart = (index, event) => {
+    if (event.type === "touchstart") {
+      setTouchStart(index);
+    } else {
+      setDragItem(index);
+      setIsDragging(true);
+    }
+  };
+
+  const handleDragEnd = (event) => {
+    if (event.type === "touchend") {
+      if (touchStart !== null && touchEnd !== null) {
+        handleDrop(touchStart, touchEnd);
+        setTouchStart(null);
+        setTouchEnd(null);
+      }
+    } else {
+      setDragItem(null);
+      setDragOverItem(null);
+      setIsDragging(false);
+    }
   };
 
   const handleDragOver = (e) => {
@@ -124,12 +144,6 @@ const Home = () => {
     setDragOverItem(null);
   };
 
-  const handleDragEnd = () => {
-    setDragItem(null);
-    setDragOverItem(null);
-    setIsDragging(false);
-  };
-
   const filteredItems = gallaryItems.filter((item) =>
     item.tag?.toLowerCase().includes(searchTheme.toLowerCase())
   );
@@ -138,7 +152,6 @@ const Home = () => {
     const sortedItems = [...filteredItems].sort((a, b) => a.id - b.id);
     setGalleryItems(sortedItems);
   };
-
 
   return (
     <div className={classes.homeContainer}>
@@ -150,7 +163,9 @@ const Home = () => {
           value={searchTheme}
           className={classes.inputField}
         />
-        <button onClick={reArrange} className={classes.button}>Re-Arrange</button>
+        <button onClick={reArrange} className={classes.button}>
+          Re-Arrange
+        </button>
       </div>
       <div className={classes.cardWrapper} ref={containerRef}>
         {filteredItems.map((data, index) => (
@@ -158,8 +173,14 @@ const Home = () => {
             key={data.id}
             url={data.url}
             tag={data.tag}
+            onTouchStart={(e) => handleDragStart(index, e)}
+            onTouchEnd={handleDragEnd}
+            onTouchMove={(e) => {
+              setTouchEnd(index);
+              e.preventDefault();
+            }}
             draggable
-            onDragStart={() => handleDragStart(index)}
+            onDragStart={(e) => handleDragStart(index, e)}
             onDragOver={handleDragOver}
             onDrop={() => handleDrop(index)}
             onDragEnter={() => handleDragEnter(index)}
